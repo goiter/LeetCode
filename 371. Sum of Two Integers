@@ -1,0 +1,18 @@
+#思路：通过位运算，‘与’得到两个数相加c，通过‘异或’确定是否需要进位p，
+# 循环将直接相加和进位结果（需要左移一位）相加，直到进位为0
+
+class Solution(object):
+
+	def getSum(self, a, b):
+		"""
+		:type a: int
+		:type b: int
+		:rtype: int
+		"""
+		while(b!=0):
+			c  = a ^ b
+			p = (a&b) << 1
+			a = c
+			b = p
+		return a
+
