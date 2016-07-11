@@ -1,5 +1,6 @@
 思路：将需要删除的结点值用后一个结点值替换，删除后一个结点
 
+# python version
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
@@ -15,3 +16,15 @@ class Solution(object):
         node.val = node.next.val
         node.next = node.next.next
         
+# C version
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+void deleteNode(struct ListNode* node) {
+    node->val = node->next->val;
+    node->next = node->next->next;
+}
