@@ -1,0 +1,12 @@
+#遇到的问题：若遍历str,进行str += term的操作会Time Limit Exceeded
+#思路：将str转成list，用list.reverse，最后再将list用string.join转成string 
+class Solution(object):
+    def reverseString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        input_str = list(s)
+        input_str.reverse()
+        output_str = ''.join(input_str)
+        return output_str
