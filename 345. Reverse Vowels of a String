@@ -1,0 +1,23 @@
+#思路：延续用题344的思想，将元音字母提取出来，并记下这些元音字母所在的index，最后将对应index元素用reverse后的元音替换 
+class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        input_str = list(s)
+        term = list(s)
+        vowels = ['a','e','i','o','u','A','E','I','O','U']
+        vowels_list = []
+        index_list = []
+        for i in range(len(input_str)):
+            if input_str[i] in vowels:
+                vowels_list.append(input_str[i])
+                index_list.append(i)
+        vowels_list.reverse()
+        for i in range(len(index_list)):
+           term[index_list[i]] = vowels_list[i]
+        return ''.join(term)
+
+                
+                
