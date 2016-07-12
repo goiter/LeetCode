@@ -1,0 +1,25 @@
+#思路：首先考虑是否为空，空也是回文；不空时，将字符串所有字母转换成小写字母，将字母和数字提取出来组成新的字符串，与逆向转换后的字符串比较，一样则是回文
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        if s =='':
+            return True
+        else:
+            str1_list = []
+            s = s.lower()
+            s_list = list(s)
+            for t in s_list:
+                if t>='a' and t<='z' or t>='0' and t<='9':
+                    str1_list.append(t)
+            str1 = ''.join(str1_list)
+            str1_list.reverse()
+            str1_reversed = ''.join(str1_list)
+            if cmp(str1,str1_reversed) == 0:
+                return True
+            else:
+                return False
+                
+        
