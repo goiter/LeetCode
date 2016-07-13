@@ -1,0 +1,28 @@
+#思路：先遍历一遍，若digit和position都一致的，则bulls_num加1，若不一致，则加入part_secret和part_guess，
+#再遍历一遍part_secret，若当前元素在part_guess中，则是cows，同时将part_guess中的这个元素删去
+class Solution(object):
+    def getHint(self, secret, guess):
+        """
+        :type secret: str
+        :type guess: str
+        :rtype: str
+        """
+        secret_list = list(secret)
+        guess_list = list(guess)
+        part_secret = []
+        part_guess = []
+        bulls_num = 0
+        cows_num = 0
+        for i in range(len(secret_list)):
+            if secret_list[i] == guess_list[i]:
+                bulls_num += 1
+            else:
+                part_secret.append(secret_list[i])
+                part_guess.append(guess_list[i])
+        for i in range(len(part_secret)):
+            if part_secret[i] in part_guess:
+                cows_num += 1
+                part_guess.remove(part_secret[i])
+        result = str(bulls_num) +'A'+str(cows_num)+'B'
+        return result
+        
