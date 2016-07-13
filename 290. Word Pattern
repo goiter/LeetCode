@@ -1,0 +1,24 @@
+#思路：将pattern和str存到list中，用dict存储{str:pattern}，同时需要注意的是若字典中不存在当前的str,
+# 并且当前的pattern也不在字典的values中，则将这一对值加到字典中
+class Solution(object):
+    def wordPattern(self, pattern, str):
+        """
+        :type pattern: str
+        :type str: str
+        :rtype: bool
+        """
+        pattern_list = list(pattern)
+        str_list = str.split(' ')
+        d = {}
+        if len(pattern_list) != len(str_list):
+            return False
+        for i in range(len(str_list)):
+            if str_list[i] not in d.keys():
+                if pattern_list[i] not in d.values():
+                    d[str_list[i]] = pattern_list[i]
+                else:
+                    return False
+            else:
+                if d[str_list[i]] != pattern_list[i]:
+                    return False
+        return True
