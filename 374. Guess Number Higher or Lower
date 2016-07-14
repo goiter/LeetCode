@@ -1,0 +1,52 @@
+// binary search
+// c++ version notice: if using m = (a+b)/2 will meet time limit exceeded, because a,b is type int, if a,b is big enough, a+b will out of range
+// Forward declaration of guess API.
+// @param num, your guess
+// @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
+int guess(int num);
+
+class Solution {
+public:
+    int guessNumber(int n) {
+        int a = 0;
+        int b = n;
+        int m = 0;
+        while(a<=b){
+            m = a+(b-a)/2;
+            int r = guess(m);
+            if(r == 0){
+                return m;
+            }
+            else if(r == 1){
+                a = m+1;
+            }
+            else{
+                b = m-1;
+            }
+        }
+        return b;
+    }
+};
+
+#python version
+# The guess API is already defined for you.
+# @param num, your guess
+# @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
+# def guess(num):
+
+class Solution(object):
+    def guessNumber(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        a = 0
+        b = n
+        m = (a+b)/2
+        while(guess(m)!=0):
+            if guess(m) == 1:
+                a = m+1
+            else:
+                b = m-1
+            m = (a+b)/2
+        return m
