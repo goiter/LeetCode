@@ -1,0 +1,20 @@
+#notice that if nums1 = [1,2] ,nums2 = [1,1] then output should be [1],so we need to remove value that has been compared
+class Solution(object):
+    def intersect(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        result = []
+        if len(nums1) < len(nums2):
+            for val in nums1:
+                if val in nums2:
+                    result.append(val)
+                    nums2.remove(val)
+        else:
+            for val in nums2:
+                if val in nums1:
+                    result.append(val)
+                    nums1.remove(val)
+        return result
